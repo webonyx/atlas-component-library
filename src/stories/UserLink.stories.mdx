@@ -1,0 +1,49 @@
+import { Meta, Story } from '@storybook/addon-docs';
+
+import { UserLink }             from './UserLink';
+import { Router }               from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+
+<!--👇 The title prop determines where your story goes in the story list -->
+<Meta title="UserLink" component={UserLink} decorators={[
+  (Story) => (
+    <Router history={createBrowserHistory()}>
+      <Story/>
+    </Router>
+  ),
+]}/>
+
+<!--👇 We create a “template” of how args map to rendering -->
+export const Template = (args) => <UserLink {...args} />;
+
+<!-- 👇 The args you need here will depend on your component -->
+## Default
+<Story
+  name="Default"
+  args={{
+    children: null,
+    user: {attuid: "bg074c", name: 'Brandon Gibbs'},
+  }}>
+  {Template.bind({})}
+</Story>
+
+## Use Children
+<Story
+  name="RenderChildren"
+  args={{
+    children: (<div>This is my link</div>),
+    user: {attuid: "bg074c", name: 'Brandon Gibbs'},
+  }}>
+  {Template.bind({})}
+</Story>
+
+## Custom To Link
+<Story
+  name="CustomTo"
+  args={{
+    children: null,
+    user: {attuid: "bg074c", name: 'Brandon Gibbs'},
+    to: '/cdo/people/:id'
+  }}>
+  {Template.bind({})}
+</Story>
