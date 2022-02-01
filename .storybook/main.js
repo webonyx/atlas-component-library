@@ -11,5 +11,10 @@ module.exports = {
   "framework": "@storybook/react",
   "core": {
     "builder": "webpack5"
+  },
+  "docs": {
+    "source": {
+      "type": "code"
+    }
   }
 }
