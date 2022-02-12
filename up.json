@@ -1,0 +1,21 @@
+{
+  "name": "atlas-component-library",
+  "regions": [
+    "us-east-1"
+  ],
+  "lambda": {
+    "memory": 128,
+    "runtime": "nodejs14.x"
+  },
+  "type": "static",
+  "static": {
+    "dir": "storybook-static",
+    "prefix": "design-system"
+  },
+  "redirects": {
+    "/*": {
+      "location": "/",
+      "status": 200
+    }
+  }
+}
