@@ -6,7 +6,7 @@ module.exports = (api) => {
     plugins: [
       '@babel/plugin-proposal-object-rest-spread',
       '@babel/transform-runtime',
-      'babel-plugin-emotion',
+      '@emotion/babel-plugin',
     ],
   };
 };
