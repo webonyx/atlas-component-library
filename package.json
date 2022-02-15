@@ -4,6 +4,7 @@
   "description": "Atlas shared component library",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.7",
     "@storybook/addon-docs": "^6.4.19",
     "@storybook/addons": "^6.4.19",
     "@storybook/theming": "^6.4.19",
