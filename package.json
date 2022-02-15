@@ -1,6 +1,10 @@
 {
   "name": "@webonyx/atlas-component-library",
   "version": "0.1.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "description": "Atlas shared component library",
   "license": "MIT",
   "dependencies": {
