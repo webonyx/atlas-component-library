@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import React, {forwardRef} from 'react'
+import {Link as RouterLink} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export const UserLink = forwardRef(({ children, user, to = '/people/:id', ...rest }, ref) => {
