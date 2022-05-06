@@ -13,7 +13,6 @@ import type {LexicalEditor, RangeSelection} from 'lexical'
 import {
   $createParagraphNode
 , $getNodeByKey
-, $getRoot
 , $getSelection
 , $isRangeSelection
 , CAN_REDO_COMMAND
@@ -64,9 +63,7 @@ import {createPortal} from 'react-dom'
 import {IS_APPLE} from '../shared/environment'
 
 import useModal from '../hooks/useModal'
-import catTypingGif from '../images/cat-typing.gif'
 import yellowFlowerImage from '../images/yellow-flower.jpg'
-import {$createStickyNode} from '../nodes/StickyNode'
 import Button from '../ui/Button'
 import DropDown from '../ui/DropDown'
 import FileInput from '../ui/FileInput.jsx'
@@ -74,7 +71,6 @@ import KatexEquationAlterer from '../ui/KatexEquationAlterer'
 import LinkPreview from '../ui/LinkPreview'
 import TextInput from '../ui/TextInput'
 import {INSERT_EQUATION_COMMAND} from './EquationsPlugin'
-import {INSERT_EXCALIDRAW_COMMAND} from './ExcalidrawPlugin'
 import {INSERT_POLL_COMMAND} from './PollPlugin'
 import {INSERT_TWEET_COMMAND} from './TwitterPlugin'
 import {INSERT_YOUTUBE_COMMAND} from './YouTubePlugin'
@@ -752,7 +748,6 @@ export default function ToolbarPlugin(): React$Node {
   const [blockType, setBlockType] = useState('paragraph');
   const [selectedElementKey, setSelectedElementKey] = useState(null);
   const [fontSize, setFontSize] = useState<string>('15px');
-  const [fontFamily, setFontFamily] = useState<string>('Arial');
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -817,9 +812,6 @@ export default function ToolbarPlugin(): React$Node {
       setFontSize(
         $getSelectionStyleValueForProperty(selection, 'font-size', '15px'),
       );
-      setFontFamily(
-        $getSelectionStyleValueForProperty(selection, 'font-family', 'Arial'),
-      );
     }
   }, [activeEditor]);
 
@@ -876,13 +868,6 @@ export default function ToolbarPlugin(): React$Node {
   const onFontSizeSelect = useCallback(
     (e) => {
       applyStyleText({'font-size': e.target.value});
-    },
-    [applyStyleText],
-  );
-
-  const onFontFamilySelect = useCallback(
-    (e) => {
-      applyStyleText({'font-family': e.target.value});
     },
     [applyStyleText],
   );
@@ -953,22 +938,6 @@ export default function ToolbarPlugin(): React$Node {
         </>
       ) : (
         <>
-          <>
-            <Select
-              className="toolbar-item font-family"
-              onChange={onFontFamilySelect}
-              options={[
-                ['Arial', 'Arial'],
-                ['Courier New', 'Courier New'],
-                ['Georgia', 'Georgia'],
-                ['Times New Roman', 'Times New Roman'],
-                ['Trebuchet MS', 'Trebuchet MS'],
-                ['Verdana', 'Verdana'],
-              ]}
-              value={fontFamily}
-            />
-            <i className="chevron-down inside" />
-          </>
           <>
             <Select
               className="toolbar-item font-size"
@@ -1087,25 +1056,6 @@ export default function ToolbarPlugin(): React$Node {
               <span className="text">Image</span>
             </button>
             <button
-              onClick={() =>
-                insertGifOnClick({
-                  altText: 'Cat typing on a laptop',
-                  src: catTypingGif,
-                })
-              }
-              className="item">
-              <i className="icon gif" />
-              <span className="text">GIF</span>
-            </button>
-            <button
-              onClick={() => {
-                activeEditor.dispatchCommand(INSERT_EXCALIDRAW_COMMAND);
-              }}
-              className="item">
-              <i className="icon diagram-2" />
-              <span className="text">Excalidraw</span>
-            </button>
-            <button
               onClick={() => {
                 showModal('Insert Table', (onClose) => (
                   <InsertTableDialog
@@ -1120,32 +1070,6 @@ export default function ToolbarPlugin(): React$Node {
             </button>
             <button
               onClick={() => {
-                showModal('Insert Poll', (onClose) => (
-                  <InsertPollDialog
-                    activeEditor={activeEditor}
-                    onClose={onClose}
-                  />
-                ));
-              }}
-              className="item">
-              <i className="icon poll" />
-              <span className="text">Poll</span>
-            </button>
-            <button
-              onClick={() => {
-                showModal('Insert Tweet', (onClose) => (
-                  <InsertTweetDialog
-                    activeEditor={activeEditor}
-                    onClose={onClose}
-                  />
-                ));
-              }}
-              className="item">
-              <i className="icon tweet" />
-              <span className="text">Tweet</span>
-            </button>
-            <button
-              onClick={() => {
                 showModal('Insert YouTube Video', (onClose) => (
                   <InsertYouTubeDialog
                     activeEditor={activeEditor}
@@ -1156,31 +1080,6 @@ export default function ToolbarPlugin(): React$Node {
               className="item">
               <i className="icon youtube" />
               <span className="text">YouTube Video</span>
-            </button>
-            <button
-              onClick={() => {
-                showModal('Insert Equation', (onClose) => (
-                  <InsertEquationDialog
-                    activeEditor={activeEditor}
-                    onClose={onClose}
-                  />
-                ));
-              }}
-              className="item">
-              <i className="icon equation" />
-              <span className="text">Equation</span>
-            </button>
-            <button
-              onClick={() => {
-                editor.update(() => {
-                  const root = $getRoot();
-                  const stickyNode = $createStickyNode(0, 0);
-                  root.append(stickyNode);
-                });
-              }}
-              className="item">
-              <i className="icon sticky" />
-              <span className="text">Sticky Note</span>
             </button>
           </DropDown>
         </>

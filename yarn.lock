@@ -1908,7 +1908,7 @@
   resolved "https://registry.npmjs.org/@lexical/rich-text/-/rich-text-0.2.5.tgz#ebbf908ebaa467bc2de51632c18cc5f006526079"
   integrity sha512-g9GaTf7e7NZYZJ8vgU2/iaj42OmWtLq7Jguy8U+8lSLBmULmAwvOS3+oUh3wVuZzQ1tQVVt73eN4cHbTQd47yw==
 
-"@lexical/selection@0.2.5":
+"@lexical/selection@0.2.5", "@lexical/selection@^0.2.5":
   version "0.2.5"
   resolved "https://registry.npmjs.org/@lexical/selection/-/selection-0.2.5.tgz#984936a90ce337f0d90fbcd92745ee9cb214467b"
   integrity sha512-65g9+9oD2VbgeXz4gaUQeRV2YoirbU3q+VaCoOCSp3R+bkZ6sw5oLrdF0g3NGeSTtYZtGPHPvz//P0woROdX3A==
