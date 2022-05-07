@@ -10,7 +10,6 @@ jobs:
       - run: |
           yarn
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
       - run: |
           yarn build
