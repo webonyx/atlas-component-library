@@ -72,7 +72,6 @@ import LinkPreview from '../ui/LinkPreview'
 import TextInput from '../ui/TextInput'
 import {INSERT_EQUATION_COMMAND} from './EquationsPlugin'
 import {INSERT_POLL_COMMAND} from './PollPlugin'
-import {INSERT_TWEET_COMMAND} from './TwitterPlugin'
 import {INSERT_YOUTUBE_COMMAND} from './YouTubePlugin'
 
 const supportedBlockTypes = new Set([
@@ -474,42 +473,6 @@ function InsertPollDialog({
       <TextInput label="Question" onChange={setQuestion} value={question} />
       <div className="ToolbarPlugin__dialogActions">
         <Button disabled={question.trim() === ''} onClick={onClick}>
-          Confirm
-        </Button>
-      </div>
-    </>
-  );
-}
-
-const VALID_TWITTER_URL = /twitter.com\/[0-9a-zA-Z]{1,20}\/status\/([0-9]*)/g;
-
-function InsertTweetDialog({
-  activeEditor,
-  onClose,
-}: {
-  activeEditor: LexicalEditor,
-  onClose: () => void,
-}): React$Node {
-  const [text, setText] = useState('');
-
-  const onClick = () => {
-    const tweetID = text.split('status/')?.[1]?.split('?')?.[0];
-    activeEditor.dispatchCommand(INSERT_TWEET_COMMAND, tweetID);
-    onClose();
-  };
-
-  const isDisabled = text === '' || !text.match(VALID_TWITTER_URL);
-
-  return (
-    <>
-      <TextInput
-        label="Tweet URL"
-        placeholder="i.e. https://twitter.com/jack/status/20"
-        onChange={setText}
-        value={text}
-      />
-      <div className="ToolbarPlugin__dialogActions">
-        <Button disabled={isDisabled} onClick={onClick}>
           Confirm
         </Button>
       </div>

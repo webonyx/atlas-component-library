@@ -1,11 +1,13 @@
 [ignore]
 .*/scripts/.*
 .*/build/.*
+.*/.idea/.*
 .*/__tests__/.*
 .*/dist/.*
 .*/npm/.*
 .*/.tempUserDataDir/.*
 .*/node_modules/.*
+.*/.storybook/.*
 
 [include]
 ./packages/

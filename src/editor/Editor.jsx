@@ -38,12 +38,11 @@ import PollPlugin from './plugins/PollPlugin'
 import TableCellActionMenuPlugin from './plugins/TableActionMenuPlugin'
 import TableCellResizer from './plugins/TableCellResizer'
 import ToolbarPlugin from './plugins/ToolbarPlugin'
-import TwitterPlugin from './plugins/TwitterPlugin'
 import YouTubePlugin from './plugins/YouTubePlugin'
 import ContentEditable from './ui/ContentEditable'
 import Placeholder from './ui/Placeholder'
 
-export default function Editor(): React$Node {
+export default function Editor() {
   const {historyState} = useSharedHistoryContext();
 
   const text = 'Write something...';
@@ -85,7 +84,6 @@ export default function Editor(): React$Node {
             <ImagesPlugin />
             <LinkPlugin />
             <PollPlugin />
-            <TwitterPlugin />
             <YouTubePlugin />
             <ClickableLinkPlugin />
           </>

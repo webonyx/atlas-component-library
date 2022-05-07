@@ -2,7 +2,7 @@ import React from 'react'
 import {Editor} from './index'
 
 export default {
-  title: 'Editor',
+  title: 'components/Editor',
   component: Editor,
   argTypes: {},
 }
