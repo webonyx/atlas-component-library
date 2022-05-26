@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "build": "cross-env BABEL_ENV=production babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore \"**/*.test.js,**/*.stories.js,*/editor\"",
     "test": "react-scripts test",
     "release": "yarn clean && yarn build && auto shipit",
     "clean": "rm -rf dist",
